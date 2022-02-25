@@ -1,0 +1,14 @@
+{
+  "compilerOptions": {
+    "baseUrl": ".",
+    "paths": {
+      "@components/*": ["components/*"],
+      "@cards/*": ["components/cards/*"],
+      "@feeds/*": ["components/feeds/*"],
+      "@sections/*": ["components/sections/*"],
+      "@sidebars/*": ["components/sidebars/*"],
+      "@skeletons/*": ["components/skeletons/*"],
+      "@utils/*": ["components/utils/*"]
+    }
+  }
+}
