@@ -13,6 +13,7 @@ export default function Footer() {
             <a
               href="https://trakteer.id/hanivanrizky"
               target="_blank"
+              rel="noreferrer"
               className="text-murasakino"
             >
               Traktirin
@@ -40,6 +41,7 @@ export default function Footer() {
           <a
             href="https://hanivan.github.io"
             target="_blank"
+            rel="noreferrer"
             className="text-murasakino"
           >
             ♥

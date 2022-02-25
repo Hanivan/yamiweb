@@ -1,4 +1,4 @@
-import { useEffect, useState } from "react";
+import { useCallback, useEffect, useState } from "react";
 import { useDebounce } from "use-debounce";
 import Title from "@utils/Title";
 import { useRouter } from "next/router";
@@ -17,7 +17,7 @@ export default function OngoingAnime() {
   const dPageNum = parseInt(debouncePage);
   const router = useRouter();
 
-  const getData = async () => {
+  const getData = useCallback(async () => {
     try {
       setAnimeList([]);
       await fetch(`
@@ -34,7 +34,7 @@ export default function OngoingAnime() {
     } catch (e) {
       console.log(e.message);
     }
-  };
+  }, [debouncePage, router]);
 
   const Dummy = () => {
     let items = [];
@@ -102,7 +102,7 @@ export default function OngoingAnime() {
 
   useEffect(() => {
     getData();
-  }, [debouncePage]);
+  }, [getData, debouncePage]);
 
   return (
     <>

@@ -9,7 +9,7 @@ export default function PageNotFound() {
     setTimeout(() => {
       router.push("/");
     }, 2600);
-  }, []);
+  }, [router]);
   return (
     <>
       <div className="container mt-5 flex flex-col lg:flex-row justify-between">

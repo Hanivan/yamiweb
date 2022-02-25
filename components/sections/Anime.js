@@ -1,7 +1,7 @@
 import Title from "@utils/Title";
 import Head from "next/head";
 
-export default function () {
+export default function Anime() {
   return (
     <>
       <Head>

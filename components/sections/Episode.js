@@ -116,6 +116,7 @@ export default function Episode({
                         <a
                           href={link}
                           target="_blank"
+                          rel="noreferrer"
                           className="hover:text-murasakino transition"
                         >
                           {name}

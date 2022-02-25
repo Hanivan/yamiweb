@@ -1,3 +1,4 @@
+import Image from "next/image";
 import Link from "next/link";
 
 export default function PostSidebar({ title, id, thumb, release_on }) {
@@ -5,7 +6,7 @@ export default function PostSidebar({ title, id, thumb, release_on }) {
     <div className="flex items-start mb-3">
       <Link href={`/${id}`}>
         <a className="lg:w-5/6 w-2/6 mr-3">
-          <img
+          <Image
             src={thumb}
             className="rounded aspect-video w-40 md:w-56 mb-2 shadow text-yami-600"
             title={title}

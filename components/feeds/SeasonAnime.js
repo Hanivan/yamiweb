@@ -1,4 +1,4 @@
-import { useEffect, useState } from "react";
+import { useCallback, useEffect, useState } from "react";
 import Title from "@utils/Title";
 import PostPotrait from "@cards/PostPotrait";
 import SkPostPotrait from "@skeletons/SkPostPotrait";
@@ -9,11 +9,12 @@ export default function AnimeSeason() {
   const [animeList, setAnimeList] = useState([]);
   const [pageTitle, setPageTitle] = useState("");
   const abortCtrl = new AbortController();
+  const abort = abortCtrl.abort;
   const signal = abortCtrl.signal;
   const router = useRouter();
   const { id } = router.query;
 
-  const getData = async () => {
+  const getData = useCallback(async () => {
     try {
       await fetch(`https://samehadaku-api.herokuapp.com/api/season/${id}`, {
         signal,
@@ -26,7 +27,7 @@ export default function AnimeSeason() {
     } catch (e) {
       console.log(e.message);
     }
-  };
+  }, [id, signal]);
 
   const Dummy = () => {
     let items = [];
@@ -39,9 +40,9 @@ export default function AnimeSeason() {
   useEffect(() => {
     getData();
     return function cleanup() {
-      abortCtrl.abort();
+      abort();
     };
-  }, [id]);
+  }, [getData, id, abort]);
 
   return (
     <>

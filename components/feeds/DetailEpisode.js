@@ -1,7 +1,7 @@
 import SkDetailEpisode from "@skeletons/SkDetailEpisode";
 import Episode from "@sections/Episode";
 import { useRouter } from "next/router";
-import { useEffect, useState } from "react";
+import { useCallback, useEffect, useState } from "react";
 
 export default function DetailEpisode() {
   const [episodeTitle, setEpisodeTitle] = useState("");
@@ -13,11 +13,12 @@ export default function DetailEpisode() {
   const [downloadList, setDownloadList] = useState([]);
   const [streamList, setStreamList] = useState([]);
   const abortCtrl = new AbortController();
+  const abort = abortCtrl.abort;
   const signal = abortCtrl.signal;
   const router = useRouter();
   const { id } = router.query;
 
-  const getData = async () => {
+  const getData = useCallback(async () => {
     try {
       setEpisodeTitle("");
       await fetch(`https://samehadaku-api.herokuapp.com/api/eps/${id}`, {
@@ -37,14 +38,14 @@ export default function DetailEpisode() {
     } catch (e) {
       console.log(e.message);
     }
-  };
+  }, [id, signal]);
 
   useEffect(() => {
     getData();
     return function cleanup() {
-      abortCtrl.abort();
+      abort();
     };
-  }, [id]);
+  }, [getData, id, abort]);
 
   return (
     <>

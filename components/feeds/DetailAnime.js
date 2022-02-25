@@ -1,9 +1,10 @@
-import { useEffect, useState } from "react";
+import { useCallback, useEffect, useState } from "react";
 import { useRouter } from "next/router";
 import Title from "@utils/Title";
 import Head from "next/head";
 import Link from "next/link";
 import Anime from "@sections/Anime";
+import Image from "next/image";
 
 export default function DetailAnime() {
   const [animeSeason, setAnimeSeason] = useState([]);
@@ -27,10 +28,11 @@ export default function DetailAnime() {
   const [animeEnglish, setAnimeEnglish] = useState("");
   const abortCtrl = new AbortController();
   const signal = abortCtrl.signal;
+  const abort = abortCtrl.abort;
   const router = useRouter();
   const { id } = router.query;
 
-  const getData = async () => {
+  const getData = useCallback(async () => {
     try {
       await fetch(`https://samehadaku-api.herokuapp.com/api/anime/${id}`, {
         signal,
@@ -61,14 +63,14 @@ export default function DetailAnime() {
     } catch (e) {
       console.log(e.message);
     }
-  };
+  }, [id, router, signal]);
 
   useEffect(() => {
     getData();
     return function cleanup() {
-      abortCtrl.abort();
+      abort();
     };
-  }, [id]);
+  }, [getData, id, abort]);
 
   const infoAnime = [
     { title: "Rating", content: `${animeScore} / ${animeRate} User` },
@@ -83,11 +85,8 @@ export default function DetailAnime() {
       } flex-row flex-wrap mt-2 gap-1.5 lg:-mt-2 xl:mt-2 text-left md:w-40`}
     >
       {animeGenre.map(({ genre_name, genre_id }) => (
-        <Link href={`anime/${genre_id}`}>
-          <a
-            key={genre_id}
-            className="border border-yami-300 text-sm text-yami-300 p-1 rounded hover:bg-yami-300 transition hover:text-yami-200"
-          >
+        <Link key={genre_id} href={`anime/${genre_id}`}>
+          <a className="border border-yami-300 text-sm text-yami-300 p-1 rounded hover:bg-yami-300 transition hover:text-yami-200">
             {genre_name}
           </a>
         </Link>
@@ -136,8 +135,8 @@ export default function DetailAnime() {
           <p className="text-murasakino">
             <span className="font-semibold text-yami-200">Producer</span>{" "}
             {animeProducer.map(({ producer_name, producer_id }) => (
-              <Link href={`anime/producer/${producer_id}`}>
-                <a key={producer_id}>
+              <Link key={producer_id} href={`anime/producer/${producer_id}`}>
+                <a>
                   {producer_name}
                   {", "}
                 </a>
@@ -151,8 +150,8 @@ export default function DetailAnime() {
           <p className="text-murasakino">
             <span className="font-semibold text-yami-200">Studio</span>{" "}
             {animeStudio.map(({ studio_name, studio_id }) => (
-              <Link href={`anime/studio/${studio_id}`}>
-                <a key={studio_id}>
+              <Link key={studio_id} href={`anime/studio/${studio_id}`}>
+                <a>
                   {studio_name}
                   {", "}
                 </a>
@@ -216,7 +215,7 @@ export default function DetailAnime() {
             </div>
             <div className="mt-5 flex flex-col md:flex-row items-center md:items-start">
               <div className="mr-3 md:float-left w-40">
-                <img
+                <Image
                   src={`${animeThumb}`}
                   alt={`${animeTitle}`}
                   className="w-40 h-62 lg:h-60 rounded mb-2"

@@ -1,4 +1,4 @@
-import { useEffect, useState } from "react";
+import { useCallback, useEffect, useState } from "react";
 import Title from "@utils/Title";
 import PostPotrait from "@cards/PostPotrait";
 import SkPostPotrait from "@skeletons/SkPostPotrait";
@@ -15,11 +15,12 @@ export default function GenreAnime() {
   const [nextPage, setNextPage] = useState("");
   const [currentPage, setCurrentPage] = useState("");
   const abortCtrl = new AbortController();
+  const abort = abortCtrl.abort;
   const signal = abortCtrl.signal;
   const router = useRouter();
   const { id } = router.query;
 
-  const getData = async () => {
+  const getData = useCallback(async () => {
     try {
       setAnimeList([]);
       await fetch(
@@ -40,7 +41,7 @@ export default function GenreAnime() {
     } catch (e) {
       console.log(e.message);
     }
-  };
+  }, [id, debouncePage, router, signal]);
 
   const Dummy = () => {
     let items = [];
@@ -53,9 +54,9 @@ export default function GenreAnime() {
   useEffect(() => {
     getData();
     return function cleanup() {
-      abortCtrl.abort();
+      abort();
     };
-  }, [id, debouncePage]);
+  }, [getData, id, abort, debouncePage]);
 
   const getPage = (e) => {
     if (isNaN(e.target.value) || e.target.value == "") return;
