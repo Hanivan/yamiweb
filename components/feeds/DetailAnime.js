@@ -1,10 +1,9 @@
-import { useCallback, useEffect, useState } from "react";
+import { useEffect, useState } from "react";
 import { useRouter } from "next/router";
 import Title from "@utils/Title";
 import Head from "next/head";
 import Link from "next/link";
 import Anime from "@sections/Anime";
-import Image from "next/image";
 
 export default function DetailAnime() {
   const [animeSeason, setAnimeSeason] = useState([]);
@@ -28,11 +27,10 @@ export default function DetailAnime() {
   const [animeEnglish, setAnimeEnglish] = useState("");
   const abortCtrl = new AbortController();
   const signal = abortCtrl.signal;
-  const abort = abortCtrl.abort;
   const router = useRouter();
   const { id } = router.query;
 
-  const getData = useCallback(async () => {
+  const getData = async () => {
     try {
       await fetch(`https://samehadaku-api.herokuapp.com/api/anime/${id}`, {
         signal,
@@ -63,14 +61,14 @@ export default function DetailAnime() {
     } catch (e) {
       console.log(e.message);
     }
-  }, [id, router, signal]);
+  };
 
   useEffect(() => {
     getData();
     return function cleanup() {
-      abort();
+      abortCtrl.abort();
     };
-  }, [getData, id, abort]);
+  }, [id]);
 
   const infoAnime = [
     { title: "Rating", content: `${animeScore} / ${animeRate} User` },
@@ -215,7 +213,7 @@ export default function DetailAnime() {
             </div>
             <div className="mt-5 flex flex-col md:flex-row items-center md:items-start">
               <div className="mr-3 md:float-left w-40">
-                <Image
+                <img
                   src={`${animeThumb}`}
                   alt={`${animeTitle}`}
                   className="w-40 h-62 lg:h-60 rounded mb-2"

@@ -1,12 +1,11 @@
 import Link from "next/link";
-import Image from "next/image";
 
 export default function PostPotrait({ title, id, thumb, status, type, score }) {
   return (
     <article className="inline-block lg:w-28 w-24 mx-auto lg:mx-0 active:translate-y-1 hover:translate-y-1 transition">
       <Link href={`/${id}`}>
         <a>
-          <Image
+          <img
             src={thumb}
             title={title}
             alt={title}

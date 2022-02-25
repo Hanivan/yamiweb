@@ -1,4 +1,3 @@
-import Image from "next/image";
 import Link from "next/link";
 
 export default function PostLandscape({ title, eps, id, thumb, release_on }) {
@@ -7,7 +6,7 @@ export default function PostLandscape({ title, eps, id, thumb, release_on }) {
       <div className="flex flex-col md:flex-row items-start">
         <Link href={`/${id}`}>
           <a>
-            <Image
+            <img
               src={thumb}
               title={title}
               alt={title}

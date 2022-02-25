@@ -1,11 +1,10 @@
-import Image from "next/image";
 import Link from "next/link";
 
 export default function NavbarBrand() {
   return (
     <Link href="/">
       <a className="flex items-center">
-        <Image
+        <img
           src="/yami-web.png"
           alt="yamiweb"
           className="w-10 h-10 rounded mr-3"

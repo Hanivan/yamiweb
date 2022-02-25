@@ -1,4 +1,4 @@
-import { useCallback, useEffect, useState } from "react";
+import { useEffect, useState } from "react";
 import Title from "@utils/Title";
 import PostPotrait from "@cards/PostPotrait";
 import SkPostPotrait from "@skeletons/SkPostPotrait";
@@ -11,12 +11,11 @@ export default function SearchAnime() {
   const [pageTitle, setPageTitle] = useState("");
   const [loading, setLoading] = useState(false);
   const abortCtrl = new AbortController();
-  const abort = abortCtrl.abort;
   const signal = abortCtrl.signal;
   const router = useRouter();
   const { q } = router.query;
 
-  const getData = useCallback(async () => {
+  const getData = async () => {
     setLoading(true);
     try {
       await fetch(`https://samehadaku-api.herokuapp.com/api/search/${q}`, {
@@ -32,14 +31,14 @@ export default function SearchAnime() {
       setLoading(true);
       console.log(e.message);
     }
-  }, [q, signal]);
+  };
 
   useEffect(() => {
     getData();
     return function cleanup() {
-      abort();
+      abortCtrl.abort();
     };
-  }, [getData, abort]);
+  }, [q]);
 
   const Dummy = () => {
     let items = [];

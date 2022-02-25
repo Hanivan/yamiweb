@@ -1,4 +1,4 @@
-import { useCallback, useEffect, useState } from "react";
+import { useEffect, useState } from "react";
 import { useDebounce } from "use-debounce";
 import Title from "@utils/Title";
 import SkPostPotrait from "@skeletons/SkPostPotrait";
@@ -18,7 +18,7 @@ export default function BatchAnime() {
   const dPageNum = parseInt(debouncePage);
   const router = useRouter();
 
-  const getData = useCallback(async () => {
+  const getData = async () => {
     try {
       setAnimeList([]);
       await fetch(`
@@ -36,7 +36,7 @@ export default function BatchAnime() {
     } catch (e) {
       console.log(e.message);
     }
-  }, [debouncePage, router]);
+  };
 
   const Dummy = () => {
     let items = [];
@@ -106,7 +106,7 @@ export default function BatchAnime() {
 
   useEffect(() => {
     getData();
-  }, [getData]);
+  }, [debouncePage]);
 
   return (
     <>
