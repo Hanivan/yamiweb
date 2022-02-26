@@ -9,7 +9,7 @@ export default function AnimeDEPage() {
 
   return (
     <>
-      <div className="container mt-5 flex flex-col lg:flex-row justify-between">
+      <div className="container mt-5 flex flex-col lg:flex-row justify-between overflow-x-hidden">
         <main className="lg:w-10/12 xl:w-9/12">
           {String(id).match("bd") || String(id).match("episode") ? (
             <DetailEpisode />
