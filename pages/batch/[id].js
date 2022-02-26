@@ -1,12 +1,12 @@
-import _AnimeGenre from "@controllers/_AnimeGenre";
+import _BatchDetail from "@controllers/_BatchDetail";
 import Footer from "@sections/Footer";
 import Navbar from "@sections/Navbar";
 
-export default function AnimeGenre() {
+export default function BatchId() {
   return (
     <>
       <Navbar />
-      <_AnimeGenre />
+      <_BatchDetail />
       <Footer />
     </>
   );

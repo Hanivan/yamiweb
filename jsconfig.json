@@ -5,6 +5,7 @@
       "@components/*": ["components/*"],
       "@cards/*": ["components/cards/*"],
       "@feeds/*": ["components/feeds/*"],
+      "@controllers/*": ["components/controllers/*"],
       "@sections/*": ["components/sections/*"],
       "@sidebars/*": ["components/sidebars/*"],
       "@skeletons/*": ["components/skeletons/*"],

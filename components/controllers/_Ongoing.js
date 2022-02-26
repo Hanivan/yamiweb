@@ -1,15 +1,15 @@
-import DetailEpisode from "@feeds/DetailEpisode";
-import OngoingList from "@sidebars/OngoingList";
+import GenreList from "@sidebars/GenreList";
+import OngoingAnime from "@feeds/OngoingAnime";
 
-export default function AnimeEpisodePage() {
+export default function _Ongoing() {
   return (
     <>
       <div className="container mt-5 flex flex-col lg:flex-row justify-between overflow-x-hidden">
         <main className="lg:w-10/12 xl:w-9/12">
-          <DetailEpisode />
+          <OngoingAnime />
         </main>
         <aside className="lg:w-4/12 xl:w-3/12">
-          <OngoingList />
+          <GenreList />
         </aside>
       </div>
     </>

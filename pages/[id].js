@@ -1,4 +1,4 @@
-import AnimeEpisodePage from "@components/AnimeEpisodePage";
+import _AnimeEpisode from "@controllers/_AnimeEpisode";
 import Footer from "@sections/Footer";
 import Navbar from "@sections/Navbar";
 
@@ -6,7 +6,7 @@ export default function Episode() {
   return (
     <>
       <Navbar />
-      <AnimeEpisodePage />
+      <_AnimeEpisode />
       <Footer />
     </>
   );

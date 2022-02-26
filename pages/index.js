@@ -1,12 +1,12 @@
-import HomePage from "@components/HomePage";
 import Navbar from "@sections/Navbar";
 import Footer from "@sections/Footer";
+import _Home from "@controllers/_Home";
 
 export default function Home() {
   return (
     <>
       <Navbar />
-      <HomePage />
+      <_Home />
       <Footer />
     </>
   );

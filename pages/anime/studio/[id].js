@@ -1,12 +1,12 @@
-import Footer from "@sections/Footer";
+import _AnimeStudio from "@components/controllers/_AnimeStudio";
 import Navbar from "@sections/Navbar";
-import StudioPage from "@components/StudioPage";
+import Footer from "@sections/Footer";
 
 export default function AnimeStudio() {
   return (
     <>
       <Navbar />
-      <StudioPage />
+      <_AnimeStudio />
       <Footer />
     </>
   );

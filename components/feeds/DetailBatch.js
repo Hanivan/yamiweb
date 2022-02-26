@@ -4,6 +4,7 @@ import Title from "@utils/Title";
 import Head from "next/head";
 import Link from "next/link";
 import SkDetailAnime from "@skeletons/SkDetailAnime";
+import DownloadList from "@utils/DownloadList";
 
 export default function DetailAnime() {
   const [animeSeason, setAnimeSeason] = useState([]);
@@ -15,16 +16,14 @@ export default function DetailAnime() {
   const [animeGenre, setAnimeGenre] = useState([]);
   const [animeDuration, setAnimeDuration] = useState("");
   const [animeScore, setAnimeScore] = useState("");
-  const [animeRate, setAnimeRate] = useState("");
   const [animeStatus, setAnimeStatus] = useState("");
   const [animeTotalEps, setAnimeTotalEps] = useState("");
   const [animeRelease, setAnimeRelease] = useState("");
   const [animeProducer, setAnimeProducer] = useState([]);
   const [animeStudio, setAnimeStudio] = useState([]);
   const [animeSynonim, setAnimeSynonim] = useState("");
-  const [animeEps, setAnimeEps] = useState([]);
-  const [animeBatch, setAnimeBatch] = useState({});
   const [animeEnglish, setAnimeEnglish] = useState("");
+  const [downloadList, setDownloadList] = useState([]);
   const abortCtrl = new AbortController();
   const signal = abortCtrl.signal;
   const router = useRouter();
@@ -32,7 +31,7 @@ export default function DetailAnime() {
 
   const getData = async () => {
     try {
-      await fetch(`https://samehadaku-api.herokuapp.com/api/anime/${id}`, {
+      await fetch(`https://samehadaku-api.herokuapp.com/api/batch/${id}`, {
         signal,
       })
         .then((res) => res.json())
@@ -47,16 +46,14 @@ export default function DetailAnime() {
           setAnimeGenre(data.genre_list);
           setAnimeDuration(data.duration);
           setAnimeScore(data.score);
-          setAnimeRate(new Intl.NumberFormat().format(data.rate));
           setAnimeStatus(data.status);
           setAnimeTotalEps(data.total_episode);
           setAnimeRelease(data.release_date);
           setAnimeProducer(data.producer_list);
           setAnimeStudio(data.studio_list);
           setAnimeSynonim(data.synonym);
-          setAnimeEps(data.episode_list);
-          setAnimeBatch(data.batch_link);
           setAnimeEnglish(data.english);
+          setDownloadList(data.download_list);
         });
     } catch (e) {
       console.log(e.message);
@@ -71,7 +68,10 @@ export default function DetailAnime() {
   }, [id]);
 
   const infoAnime = [
-    { title: "Rating", content: `${animeScore} / ${animeRate} User` },
+    {
+      title: "Rating",
+      content: `${animeScore}`,
+    },
     { title: "Status", content: `${animeStatus}` },
     { title: "Total Episode", content: `${animeTotalEps}` },
   ];
@@ -161,29 +161,29 @@ export default function DetailAnime() {
     </ul>
   );
 
-  const Episodes = () => (
-    <>
-      {animeEps.length ? (
-        <ul className="w-full md:w-4/6 h-44 scrollbar-thin scrollbar-thumb-murasakino scrollbar-track-yami-600 overflow-y-auto">
-          {animeEps.map(({ title, id, uploaded_on }) => (
-            <li
-              key={id}
-              className="hover:bg-yami-600 hover:cursor-pointer transition text-murasakino rounded py-2 px-1 border-b border-yami-600"
-            >
-              <Link href={`/${id}`}>
-                <a className="inline-block xl:inline text-yami-200 hover:text-murasakino transition w-48 md:w-72 lg:w-64 xl:w-full">
-                  {title}
-                </a>
-              </Link>
-              <span className="float-right">{uploaded_on}</span>
-            </li>
-          ))}
-        </ul>
-      ) : (
-        <p>Kosong</p>
-      )}
-    </>
-  );
+  // const Episodes = () => (
+  //   <>
+  //     {animeEps.length ? (
+  //       <ul className="w-full md:w-4/6 h-44 scrollbar-thin scrollbar-thumb-murasakino scrollbar-track-yami-600 overflow-y-auto">
+  //         {animeEps.map(({ title, id, uploaded_on }) => (
+  //           <li
+  //             key={id}
+  //             className="hover:bg-yami-600 hover:cursor-pointer transition text-murasakino rounded py-2 px-1 border-b border-yami-600"
+  //           >
+  //             <Link href={`/${id}`}>
+  //               <a className="inline-block xl:inline text-yami-200 hover:text-murasakino transition w-48 md:w-72 lg:w-64 xl:w-full">
+  //                 {title}
+  //               </a>
+  //             </Link>
+  //             <span className="float-right">{uploaded_on}</span>
+  //           </li>
+  //         ))}
+  //       </ul>
+  //     ) : (
+  //       <p>Kosong</p>
+  //     )}
+  //   </>
+  // );
 
   return (
     <>
@@ -228,19 +228,7 @@ export default function DetailAnime() {
               </div>
             </div>
             <Genre hidden />
-            <div className="mt-10">
-              <Title>Daftar Episode</Title>
-              <Episodes />
-              <Link
-                href={`/batch/${
-                  animeBatch.id != "Masih Kosong" ? animeBatch.id : "#"
-                }`}
-              >
-                <a className="inline-block text-center p-1 mt-3 rounded w-full md:w-4/6 text-murasakino hover:shadow bg-yami-600 hover:bg-yami-900 transition">
-                  Download Batch
-                </a>
-              </Link>
-            </div>
+            <DownloadList downloadList={downloadList} />
           </div>
         </>
       )}

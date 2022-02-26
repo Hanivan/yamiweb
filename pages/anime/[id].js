@@ -1,4 +1,4 @@
-import AnimeDetailPage from "@components/AnimeDetailPage";
+import _AnimeDetail from "@controllers/_AnimeDetail";
 import Footer from "@components/sections/Footer";
 import Navbar from "@components/sections/Navbar";
 
@@ -6,7 +6,7 @@ export default function DetailAnime() {
   return (
     <>
       <Navbar />
-      <AnimeDetailPage />
+      <_AnimeDetail />
       <Footer />
     </>
   );

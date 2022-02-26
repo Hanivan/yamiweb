@@ -2,7 +2,7 @@ import Link from "next/link";
 
 export default function PostGenre({ name, title, id, total }) {
   return (
-    <Link href={`/anime/${id}`}>
+    <Link href={`/anime/genre/${id}`}>
       <a className="w-full md:w-80 lg:w-64 h-16 bg-yami-600 rounded p-3 flex items-center justify-between hover:bg-yami-900 hover:shadow transition">
         <div>
           <div className="inline-block text-lg font-semibold hover:text-murasakino transition">

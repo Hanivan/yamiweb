@@ -2,7 +2,7 @@ import { NotFound, Dummy } from "@sections/NotFound";
 import { useRouter } from "next/router";
 import { useEffect } from "react";
 
-export default function PageNotFound() {
+export default function _NotFound() {
   const router = useRouter();
 
   useEffect(() => {

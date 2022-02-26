@@ -1,4 +1,4 @@
-import SearchPage from "@components/SearchPage";
+import _Search from "@controllers/_Search";
 import Footer from "@sections/Footer";
 import Navbar from "@sections/Navbar";
 
@@ -6,7 +6,7 @@ export default function Search() {
   return (
     <>
       <Navbar />
-      <SearchPage />
+      <_Search />
       <Footer />
     </>
   );

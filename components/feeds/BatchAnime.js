@@ -118,6 +118,7 @@ export default function BatchAnime() {
         {animeList.length ? (
           animeList.map(({ id, title, thumb, status, type, score }) => (
             <PostPotrait
+              href="/batch"
               key={id}
               title={title}
               id={id}

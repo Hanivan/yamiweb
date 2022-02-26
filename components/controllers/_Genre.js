@@ -1,15 +1,15 @@
-import GenreList from "@sidebars/GenreList";
-import MovieAnime from "@feeds/MovieAnime";
+import AllGenre from "@feeds/AllGenre";
+import OngoingList from "@sidebars/OngoingList";
 
-export default function MoviePage() {
+export default function _Genre() {
   return (
     <>
       <div className="container mt-5 flex flex-col lg:flex-row justify-between overflow-x-hidden">
         <main className="lg:w-10/12 xl:w-9/12">
-          <MovieAnime />
+          <AllGenre />
         </main>
         <aside className="lg:w-4/12 xl:w-3/12">
-          <GenreList />
+          <OngoingList />
         </aside>
       </div>
     </>

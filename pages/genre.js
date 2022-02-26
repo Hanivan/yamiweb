@@ -1,4 +1,4 @@
-import GenrePage from "@components/GenrePage";
+import _Genre from "@controllers/_Genre";
 import Footer from "@sections/Footer";
 import Navbar from "@sections/Navbar";
 
@@ -6,7 +6,7 @@ export default function Genre() {
   return (
     <>
       <Navbar />
-      <GenrePage />
+      <_Genre />
       <Footer />
     </>
   );
