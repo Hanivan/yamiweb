@@ -11,7 +11,7 @@ export default function PostPotrait({
 }) {
   return (
     <article className="inline-block lg:w-28 w-24 mx-auto lg:mx-0 active:translate-y-1 hover:translate-y-1 transition">
-      <Link href={`/${href}/${id}`}>
+      <Link href={`${href}/${id}`}>
         <a>
           <img
             src={thumb}
@@ -30,7 +30,7 @@ export default function PostPotrait({
           </div>
         </a>
       </Link>
-      <Link href={`/${href}/${id}`}>
+      <Link href={`${href}/${id}`}>
         <a
           className="inline-block truncate transition hover:text-murasakino w-full"
           title={title}
