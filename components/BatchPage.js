@@ -4,7 +4,7 @@ import BatchAnime from "@feeds/BatchAnime";
 export default function BatchPage() {
   return (
     <>
-      <div className="container mt-5 flex flex-col lg:flex-row justify-between">
+      <div className="container mt-5 flex flex-col lg:flex-row justify-between overflow-x-hidden">
         <main className="lg:w-10/12 xl:w-9/12">
           <BatchAnime />
         </main>

@@ -129,7 +129,7 @@ export default function AllAnime() {
           <Dummy />
         )}
       </div>
-      <div className="space-x-1 flex items-center float-right">
+      <div className="space-x-1 flex items-center float-right mt-2 xl:mr-5">
         <PrevLink />
         <input
           className="border text-sm border-murasakino p-1.5 w-16 rounded bg-yami-900 text-center transition-all focus:outline-none focus:ring-1 focus:ring-murasakino"

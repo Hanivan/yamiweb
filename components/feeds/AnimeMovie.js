@@ -53,7 +53,7 @@ export default function AnimeMovie() {
           <Dummy />
         )}
       </div>
-      <Button href="#" text="Lihat Semua" />
+      <Button href="/movie" text="Lihat Semua" />
     </div>
   );
 }
