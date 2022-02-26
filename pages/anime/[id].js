@@ -1,12 +1,12 @@
-import AnimeGenrePage from "@components/AnimeGenrePage";
-import Footer from "@sections/Footer";
-import Navbar from "@sections/Navbar";
+import AnimeDetailPage from "@components/AnimeDetailPage";
+import Footer from "@components/sections/Footer";
+import Navbar from "@components/sections/Navbar";
 
-export default function AnimeGenre() {
+export default function DetailAnime() {
   return (
     <>
       <Navbar />
-      <AnimeGenrePage />
+      <AnimeDetailPage />
       <Footer />
     </>
   );

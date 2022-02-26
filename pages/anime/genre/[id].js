@@ -1,12 +1,12 @@
-import AnimeEpisodePage from "@components/AnimeEpisodePage";
+import AnimeGenrePage from "@components/AnimeGenrePage";
 import Footer from "@sections/Footer";
 import Navbar from "@sections/Navbar";
 
-export default function Episode() {
+export default function AnimeGenre() {
   return (
     <>
       <Navbar />
-      <AnimeEpisodePage />
+      <AnimeGenrePage />
       <Footer />
     </>
   );

@@ -34,7 +34,7 @@ export default function GenreList() {
     genreList.map(({ name, id, total }) => {
       items.push(
         <li key={id}>
-          <Link href={`/anime/${id}`}>
+          <Link href={`/anime/genre/${id}`}>
             <a className="hover:text-murasakino transition">
               {name} <span className="text-xs">({total})</span>
             </a>

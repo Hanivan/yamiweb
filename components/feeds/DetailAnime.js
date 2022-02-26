@@ -3,7 +3,7 @@ import { useRouter } from "next/router";
 import Title from "@utils/Title";
 import Head from "next/head";
 import Link from "next/link";
-import Anime from "@sections/Anime";
+import SkDetailAnime from "@skeletons/SkDetailAnime";
 
 export default function DetailAnime() {
   const [animeSeason, setAnimeSeason] = useState([]);
@@ -37,7 +37,7 @@ export default function DetailAnime() {
       })
         .then((res) => res.json())
         .then((data) => {
-          data.title == "" && router.push("404");
+          data.title == "" && router.push("/404");
           setAnimeSeason(data.season_list);
           setAnimeTitle(data.title);
           setAnimeThumb(data.thumb);
@@ -83,7 +83,7 @@ export default function DetailAnime() {
       } flex-row flex-wrap mt-2 gap-1.5 lg:-mt-2 xl:mt-2 text-left md:w-40`}
     >
       {animeGenre.map(({ genre_name, genre_id }) => (
-        <Link key={genre_id} href={`anime/${genre_id}`}>
+        <Link key={genre_id} href={`/anime/genre/${genre_id}`}>
           <a className="border border-yami-300 text-sm text-yami-300 p-1 rounded hover:bg-yami-300 transition hover:text-yami-200">
             {genre_name}
           </a>
@@ -96,7 +96,7 @@ export default function DetailAnime() {
     <span className="text-sm">
       {animeJapanese} • {animeType} •{" "}
       {animeSeason.length ? (
-        <Link href={`anime/season/${animeSeason[0].season_id}`}>
+        <Link href={`/anime/season/${animeSeason[0].season_id}`}>
           <a className="hover:text-murasakino active:text-murasakino transition">
             {animeSeason[0].season_name}
           </a>
@@ -133,7 +133,7 @@ export default function DetailAnime() {
           <p className="text-murasakino">
             <span className="font-semibold text-yami-200">Producer</span>{" "}
             {animeProducer.map(({ producer_name, producer_id }) => (
-              <Link key={producer_id} href={`anime/producer/${producer_id}`}>
+              <Link key={producer_id} href={`/anime/producer/${producer_id}`}>
                 <a>
                   {producer_name}
                   {", "}
@@ -148,7 +148,7 @@ export default function DetailAnime() {
           <p className="text-murasakino">
             <span className="font-semibold text-yami-200">Studio</span>{" "}
             {animeStudio.map(({ studio_name, studio_id }) => (
-              <Link key={studio_id} href={`anime/studio/${studio_id}`}>
+              <Link key={studio_id} href={`/anime/studio/${studio_id}`}>
                 <a>
                   {studio_name}
                   {", "}
@@ -170,7 +170,7 @@ export default function DetailAnime() {
               key={id}
               className="hover:bg-yami-600 hover:cursor-pointer transition text-murasakino rounded py-2 px-1 border-b border-yami-600"
             >
-              <Link href={id}>
+              <Link href={`/${id}`}>
                 <a className="inline-block xl:inline text-yami-200 hover:text-murasakino transition w-48 md:w-72 lg:w-64 xl:w-full">
                   {title}
                 </a>
@@ -188,7 +188,7 @@ export default function DetailAnime() {
   return (
     <>
       {!animeTitle ? (
-        <Anime />
+        <SkDetailAnime />
       ) : (
         <>
           <Head>
@@ -214,9 +214,9 @@ export default function DetailAnime() {
             <div className="mt-5 flex flex-col md:flex-row items-center md:items-start">
               <div className="mr-3 md:float-left w-40">
                 <img
-                  src={`${animeThumb}`}
-                  alt={`${animeTitle}`}
-                  className="w-40 h-62 lg:h-60 rounded mb-2"
+                  src={animeThumb}
+                  alt={animeTitle}
+                  className="w-40 h-62 lg:h-60 rounded mb-2 shadow"
                 />
                 <Genre />
               </div>

@@ -7,7 +7,7 @@ export default function NavbarBrand() {
         <img
           src="/yami-web.png"
           alt="yamiweb"
-          className="w-10 h-10 rounded mr-3"
+          className="w-10 h-10 rounded mr-3 shadow"
         />
         <h2 className="text-lg font-bold font-serif transition hover:text-murasakino">
           Yami Web

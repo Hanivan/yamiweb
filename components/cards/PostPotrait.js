@@ -3,7 +3,7 @@ import Link from "next/link";
 export default function PostPotrait({ title, id, thumb, status, type, score }) {
   return (
     <article className="inline-block lg:w-28 w-24 mx-auto lg:mx-0 active:translate-y-1 hover:translate-y-1 transition">
-      <Link href={`/${id}`}>
+      <Link href={`/anime/${id}`}>
         <a>
           <img
             src={thumb}
@@ -22,7 +22,7 @@ export default function PostPotrait({ title, id, thumb, status, type, score }) {
           </div>
         </a>
       </Link>
-      <Link href={`/${id}`}>
+      <Link href={`/anime/${id}`}>
         <a
           className="inline-block truncate transition hover:text-murasakino w-full"
           title={title}

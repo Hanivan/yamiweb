@@ -1,7 +1,7 @@
 import Title from "@utils/Title";
 import Head from "next/head";
 
-export default function Anime() {
+export default function SkDetailAnime() {
   return (
     <>
       <Head>
