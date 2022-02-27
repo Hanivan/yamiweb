@@ -1,13 +1,6 @@
 import _AnimeProducer from "@components/controllers/_AnimeProducer";
-import Footer from "@components/sections/Footer";
-import Navbar from "@components/sections/Navbar";
+import Layout from "@components/sections/Layout";
 
 export default function AnimeProducer() {
-  return (
-    <>
-      <Navbar />
-      <_AnimeProducer />
-      <Footer />
-    </>
-  );
+  return <Layout content={<_AnimeProducer />} />;
 }

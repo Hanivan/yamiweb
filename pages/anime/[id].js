@@ -1,13 +1,6 @@
+import Layout from "@sections/Layout";
 import _AnimeDetail from "@controllers/_AnimeDetail";
-import Footer from "@components/sections/Footer";
-import Navbar from "@components/sections/Navbar";
 
 export default function DetailAnime() {
-  return (
-    <>
-      <Navbar />
-      <_AnimeDetail />
-      <Footer />
-    </>
-  );
+  return <Layout content={<_AnimeDetail />} />;
 }

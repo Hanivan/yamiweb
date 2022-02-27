@@ -5,6 +5,9 @@ import SkPostPotrait from "@skeletons/SkPostPotrait";
 import PostPotrait from "@cards/PostPotrait";
 import { useRouter } from "next/router";
 import Head from "next/head";
+import InputPage from "@utils/InputPage";
+import PrevLink from "@utils/PrevLink";
+import NextLink from "@utils/NextLink";
 
 export default function BatchAnime() {
   const [animeList, setAnimeList] = useState([]);
@@ -46,64 +49,6 @@ export default function BatchAnime() {
     return <>{items}</>;
   };
 
-  const getPage = (e) => {
-    if (isNaN(e.target.value) || e.target.value == "") return;
-    setPage(e.target.value);
-    setTimeout(() => (e.target.value = ""), 3000);
-  };
-
-  const PrevLink = () => {
-    if (prevPage == "#" || prevPage == "" || prevPage == undefined)
-      return <div></div>;
-    return (
-      <button
-        title="Previous Page"
-        className="p-2 mt-0.5 border border-murasakino text-murasakino rounded flex items-center justify-center hover:bg-murasakino hover:cursor-pointer transition hover:text-yami-900 active:bg-murasakino active:text-yami-900"
-        onClick={() => setPage((dPageNum -= 1))}
-      >
-        <svg
-          className="bi bi-chevron-left"
-          xmlns="http://www.w3.org/2000/svg"
-          width="16"
-          height="16"
-          fill="currentColor"
-          viewBox="0 0 16 16"
-        >
-          <path
-            fillRule="evenodd"
-            d="M11.354 1.646a.5.5 0 0 1 0 .708L5.707 8l5.647 5.646a.5.5 0 0 1-.708.708l-6-6a.5.5 0 0 1 0-.708l6-6a.5.5 0 0 1 .708 0z"
-          />
-        </svg>
-      </button>
-    );
-  };
-
-  const NextLink = () => {
-    if (nextPage == "#" || nextPage == "" || nextPage == undefined)
-      return <div></div>;
-    return (
-      <button
-        title="Next Page"
-        className="p-2 mt-0.5 border border-murasakino text-murasakino rounded flex items-center justify-center hover:bg-murasakino hover:cursor-pointer transition hover:text-yami-900 active:bg-murasakino active:text-yami-900"
-        onClick={() => setPage((dPageNum += 1))}
-      >
-        <svg
-          className="bi bi-chevron-right"
-          xmlns="http://www.w3.org/2000/svg"
-          width="16"
-          height="16"
-          fill="currentColor"
-          viewBox="0 0 16 16"
-        >
-          <path
-            fillRule="evenodd"
-            d="M4.646 1.646a.5.5 0 0 1 .708 0l6 6a.5.5 0 0 1 0 .708l-6 6a.5.5 0 0 1-.708-.708L10.293 8 4.646 2.354a.5.5 0 0 1 0-.708z"
-          />
-        </svg>
-      </button>
-    );
-  };
-
   useEffect(() => {
     getData();
   }, [debouncePage]);
@@ -133,14 +78,9 @@ export default function BatchAnime() {
         )}
       </div>
       <div className="space-x-1 flex items-center float-right mt-2 xl:mr-3">
-        <PrevLink />
-        <input
-          className="border text-sm border-murasakino p-1.5 w-16 rounded bg-yami-900 text-center transition-all focus:outline-none focus:ring-1 focus:ring-murasakino"
-          id="inputPage"
-          placeholder={`${currentPage ? currentPage : "- of -"}`}
-          onChange={(e) => getPage(e)}
-        />
-        <NextLink />
+        <PrevLink page={prevPage} pageNum={dPageNum} setter={setPage} />
+        <InputPage currentPage={currentPage} setter={setPage} />
+        <NextLink page={nextPage} pageNum={dPageNum} setter={setPage} />
       </div>
     </>
   );

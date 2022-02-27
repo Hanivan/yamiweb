@@ -25,7 +25,7 @@ class MyDocument extends Document {
           />
           <link rel="shortcut icon" href="/yami-web.png" type="image/x-icon" />
         </Head>
-        <body className="bg-yami-900 text-yami-200">
+        <body>
           <Main />
           <NextScript />
         </body>

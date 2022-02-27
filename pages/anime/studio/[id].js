@@ -1,13 +1,6 @@
-import _AnimeStudio from "@components/controllers/_AnimeStudio";
-import Navbar from "@sections/Navbar";
-import Footer from "@sections/Footer";
+import _AnimeStudio from "@controllers/_AnimeStudio";
+import Layout from "@components/sections/Layout";
 
 export default function AnimeStudio() {
-  return (
-    <>
-      <Navbar />
-      <_AnimeStudio />
-      <Footer />
-    </>
-  );
+  return <Layout content={<_AnimeStudio />} />;
 }

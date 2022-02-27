@@ -43,7 +43,7 @@ export default function AnimeMovie() {
               key={id}
               title={title}
               id={id}
-              thumb={thumb || "/takagi.jpg"}
+              thumb={thumb}
               status={status}
               type={type}
               score={score}

@@ -53,27 +53,6 @@ export default function SearchAnime() {
     );
   };
 
-  const ShowData = () => {
-    return (
-      <>
-        <Title>{pageTitle}</Title>
-        <div className="mt-5 flex flex-wrap gap-3">
-          {animeList.map(({ id, title, thumb, status, type, score }) => (
-            <PostPotrait
-              key={id}
-              title={title}
-              id={id}
-              thumb={thumb}
-              status={status}
-              type={type}
-              score={score}
-            />
-          ))}
-        </div>
-      </>
-    );
-  };
-
   return (
     <>
       <Head>
@@ -89,7 +68,22 @@ export default function SearchAnime() {
               <NotFound />
             </>
           ) : (
-            <ShowData />
+            <>
+              <Title>{pageTitle}</Title>
+              <div className="mt-5 flex flex-wrap gap-3">
+                {animeList.map(({ id, title, thumb, status, type, score }) => (
+                  <PostPotrait
+                    key={id}
+                    title={title}
+                    id={id}
+                    thumb={thumb}
+                    status={status}
+                    type={type}
+                    score={score}
+                  />
+                ))}
+              </div>
+            </>
           )}
         </>
       )}
