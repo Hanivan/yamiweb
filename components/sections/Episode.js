@@ -50,7 +50,12 @@ export default function Episode({
         <RenderStream quality={high}>High</RenderStream>
       </div>
       <div className="w-full md:w-9/12 lg:w-11/12 xl:w-4/6 h-54 md:h-80 aspect-video bg-yami-600 mx-auto rounded">
-        <ReactPlayer url={url} width="100%" height="100%" controls={true} />
+        <ReactPlayer
+          url={`/sorry.mp4`}
+          width="100%"
+          height="100%"
+          controls={true}
+        />
       </div>
       <div className="mx-auto text-center md:w-9/12 lg:w-11/12 xl:w-4/6 flex text-sm mt-2">
         <Link href={prevEps != "#" ? `/${prevEps}` : "#"}>

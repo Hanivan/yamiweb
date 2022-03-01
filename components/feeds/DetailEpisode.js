@@ -25,7 +25,7 @@ export default function DetailEpisode() {
       })
         .then((res) => res.json())
         .then((data) => {
-          data.title == "" && router.push("/404");
+          !data.title && router.push("/404");
           setEpisodeTitle(data.title);
           setCurrentEps(data.current_episode);
           setReleaseDate(data.release_date);
