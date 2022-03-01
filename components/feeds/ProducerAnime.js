@@ -19,15 +19,20 @@ export default function ProducerAnime() {
   const [currentPage, setCurrentPage] = useState("");
 
   const dPageNum = parseInt(debouncePage);
+  const abortCtrl = new AbortController();
+  const signal = abortCtrl.signal;
   const router = useRouter();
   const { id } = router.query;
 
   const getData = async () => {
     try {
       setAnimeList([]);
-      await fetch(`
+      await fetch(
+        `
          https://samehadaku-api.herokuapp.com/api/producer/${id}/page/${debouncePage}
-         `)
+         `,
+        { signal }
+      )
         .then((res) => res.json())
         .then((data) => {
           data.content_name == "Halaman tidak ditemukan" && router.push("/404");
@@ -52,7 +57,10 @@ export default function ProducerAnime() {
 
   useEffect(() => {
     getData();
-  }, [debouncePage]);
+    return function cleanup() {
+      abortCtrl.abort();
+    };
+  }, [id, debouncePage]);
 
   return (
     <>
