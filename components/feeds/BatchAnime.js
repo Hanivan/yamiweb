@@ -29,7 +29,7 @@ export default function BatchAnime() {
          `)
         .then((res) => res.json())
         .then((data) => {
-          data.content_name == "Halaman tidak ditemukan" && router.push("404");
+          Array(data.anime_list)[0].length < 1 && router.push("/404");
           setAnimeList(data.anime_list);
           setPageTitle(data.content_name);
           setCurrentPage(data.current_page);

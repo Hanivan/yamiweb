@@ -1,6 +1,14 @@
 import Link from "next/link";
 
 export default function PaginationEps({ prev, detail, next }) {
+  let isRound;
+  if (prev == "#" || prev == "") {
+    isRound = "rounded-tl rounded-bl";
+  } else if (next == "#" || next == "") {
+    isRound = "rounded-tr rounded-br";
+  } else {
+    isRound = "";
+  }
   return (
     <div className="mx-auto text-center md:w-9/12 lg:w-11/12 xl:w-4/6 flex text-sm mt-2">
       {prev != "#" ? (
@@ -26,7 +34,9 @@ export default function PaginationEps({ prev, detail, next }) {
       )}
       {detail != "#" ? (
         <Link href={`/anime/${detail}`}>
-          <a className="border border-murasakino text-murasakino inline-block w-full hover:bg-yami-600 transition">
+          <a
+            className={`${isRound} border border-murasakino text-murasakino inline-block w-full hover:bg-yami-600 transition`}
+          >
             Semua Episode
           </a>
         </Link>

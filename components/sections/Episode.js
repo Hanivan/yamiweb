@@ -1,7 +1,7 @@
+import PaginationEps from "@components/utils/PaginationEps";
 import DownloadList from "@utils/DownloadList";
 import Title from "@utils/Title";
 import Head from "next/head";
-import Link from "next/link";
 import { useState } from "react";
 import ReactPlayer from "react-player";
 
@@ -27,7 +27,7 @@ export default function Episode({
   const RenderStream = ({ children, quality }) => {
     return (
       <button
-        className="w-full rounded-tl rounded-bl border hover:bg-yami-600 transition"
+        className="w-full rounded border hover:bg-yami-600 transition"
         onClick={() => setUrl(quality)}
       >
         {children}
@@ -57,47 +57,7 @@ export default function Episode({
           controls={true}
         />
       </div>
-      <div className="mx-auto text-center md:w-9/12 lg:w-11/12 xl:w-4/6 flex text-sm mt-2">
-        <Link href={prevEps != "#" ? `/${prevEps}` : "#"}>
-          <a className="border border-murasakino inline-block w-full rounded-tl rounded-bl hover:bg-yami-600 transition">
-            <svg
-              className="inline-block css-i6dzq1"
-              viewBox="0 0 24 24"
-              width="24"
-              height="24"
-              stroke="#A093C7"
-              strokeWidth="2"
-              fill="none"
-              strokeLinecap="round"
-              strokeLinejoin="round"
-            >
-              <polyline points="15 18 9 12 15 6"></polyline>
-            </svg>
-          </a>
-        </Link>
-        <Link href={animeDetail ? `/${animeDetail}` : "#"}>
-          <a className="border border-murasakino text-murasakino inline-block w-full mx-2 hover:bg-yami-600 transition">
-            Semua Episode
-          </a>
-        </Link>
-        <Link href={`/${nextEps}`}>
-          <a className="border border-murasakino inline-block w-full rounded-tr rounded-br hover:bg-yami-600 transition">
-            <svg
-              className="inline-block css-i6dzq1"
-              viewBox="0 0 24 24"
-              width="24"
-              height="24"
-              stroke="#A093C7"
-              strokeWidth="2"
-              fill="none"
-              strokeLinecap="round"
-              strokeLinejoin="round"
-            >
-              <polyline points="9 18 15 12 9 6"></polyline>
-            </svg>
-          </a>
-        </Link>
-      </div>
+      <PaginationEps prev={prevEps} detail={animeDetail} next={nextEps} />
       <DownloadList downloadList={downloadList} />
     </>
   );
