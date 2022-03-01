@@ -1,34 +1,64 @@
-This is a [Next.js](https://nextjs.org/) project bootstrapped with [`create-next-app`](https://github.com/vercel/next.js/tree/canary/packages/create-next-app).
+### Yami Web
+
+The other side of a web. That only someone who knows. and only a few people understand the meaning of this paragraph.
+
+Hmm~ Just kidding wkwk.
+
+In short, this website is the same as an anime streaming/download site.
+
+BUT! due to resource limitations... This website only has a few features, including:
+
+- Show anime in this seasons
+- Show detail's of anime
+- Download link for each anime episode
+- ~ ~ ~ anime batch
+- ~ ~ ~ anime movie<br>
+  and many more.
+
+Do not be sad (^-^), for you Linux users. You can still watch anime via the terminal. Besides being cool, it can also save memory RAM. What are you waiting for? Let's clone [Samehadaku-CLI](https://github.com/Hanivan/Samehadaku-CLI)
 
 ## Getting Started
 
-First, run the development server:
+1. Clone this repo
 
 ```bash
-npm run dev
+mkdir -p ~/Documents/git && git clone --depth=1 https://github.com/Hanivan/yamiweb.git ~/Documents/git/yamiweb && cd ~/Documents/git/yamiweb
+```
+
+2. Install packages
+
+```bash
+yarn install
 # or
+npm i
+```
+
+3. Run the project
+
+```bash
 yarn dev
+# or
+npm run dev
 ```
 
 Open [http://localhost:3000](http://localhost:3000) with your browser to see the result.
 
 You can start editing the page by modifying `pages/index.js`. The page auto-updates as you edit the file.
 
-[API routes](https://nextjs.org/docs/api-routes/introduction) can be accessed on [http://localhost:3000/api/hello](http://localhost:3000/api/hello). This endpoint can be edited in `pages/api/hello.js`.
+## Contributing
 
-The `pages/api` directory is mapped to `/api/*`. Files in this directory are treated as [API routes](https://nextjs.org/docs/api-routes/introduction) instead of React pages.
+Pull requests are welcome. For major changes, please open an issue first to discuss what you would like to change.
 
-## Learn More
+## Development Details
 
-To learn more about Next.js, take a look at the following resources:
+**Start Work**: Thursday, 17 Feb 22; 17:-- WIB<br>
+**Finished Work**: Tuesday, 1 Mar 22; 15:-- WIB
 
-- [Next.js Documentation](https://nextjs.org/docs) - learn about Next.js features and API.
-- [Learn Next.js](https://nextjs.org/learn) - an interactive Next.js tutorial.
+Resource API: [https://samehadaku-api.herokuapp.com](https://samehadaku-api.herokuapp.com)
 
-You can check out [the Next.js GitHub repository](https://github.com/vercel/next.js/) - your feedback and contributions are welcome!
+Tools I used for making this application:
 
-## Deploy on Vercel
-
-The easiest way to deploy your Next.js app is to use the [Vercel Platform](https://vercel.com/new?utm_medium=default-template&filter=next.js&utm_source=create-next-app&utm_campaign=create-next-app-readme) from the creators of Next.js.
-
-Check out our [Next.js deployment documentation](https://nextjs.org/docs/deployment) for more details.
+- next
+- tailwindcss
+- tailwind-scrollbar
+- react-player
