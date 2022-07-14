@@ -54,7 +54,7 @@ Pull requests are welcome. For major changes, please open an issue first to disc
 **Start Work**: Thursday, 17 Feb 22; 17:-- WIB<br>
 **Finished Work**: Tuesday, 1 Mar 22; 15:-- WIB
 
-Resource API: [https://samehadaku-api.herokuapp.com](https://samehadaku-api.herokuapp.com)
+Resource API: [https://samehadaku-api.herokuapp.com/api](https://samehadaku-api.herokuapp.com/api)
 
 Tools I used for making this application:
 
