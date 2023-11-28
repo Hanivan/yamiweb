@@ -23,4 +23,5 @@ jobs:
         port: ${{ secrets.PORT }}
         script: |
           whoami
-          echo $USER_TO
+          cd ~/$USER_TO
+          pwd
