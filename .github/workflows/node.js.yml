@@ -1,7 +1,7 @@
 # This workflow will do a clean installation of node dependencies, cache/restore them, build the source code and run tests across different versions of node
 # For more information see: https://docs.github.com/en/actions/automating-builds-and-tests/building-and-testing-nodejs
 
-name: Node.js CI
+name: Deploy yamiweb
 
 on:
   push:
@@ -14,7 +14,7 @@ jobs:
     name: Build
     runs-on: ubuntu-latest
     steps:
-    - name: executing remote ssh commands using password
+    - name: Update Project On VPS
       uses: appleboy/ssh-action@v1.0.0
       with:
         host: ${{ secrets.HOST }}
@@ -22,10 +22,23 @@ jobs:
         key: ${{ secrets.SSH_PRIVATE_KEY }}
         port: ${{ secrets.PORT }}
         script: |
-          whoami
-          cd /home/$USER_TO
-          pwd
-          rm -rf ~/test_folder
-          mkdir -p ~/test_folder
-          echo "${{ secrets.USERNAME }}" >> /home/${{ secrets.USERNAME }}/test_folder/qwe.txt
-          echo "$USER_TO"
+          cd /home/${{ secrets.USERNAME }}
+          cd apps
+          cd yamiweb
+          git pull origin main
+
+    - name: Checkout code
+      uses: actions/checkout@v4
+
+    - name: Use Node.js
+      uses: actions/setup-node@v3
+      with:
+        node-version: '20.x'  # Update this to the desired Node.js version
+
+    - name: Install dependencies
+      run: npm --location=global i yarn
+
+    - name: Build NextJS
+      run: |
+        yarn build
+        pwd
