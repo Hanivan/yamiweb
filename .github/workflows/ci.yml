@@ -1,0 +1,28 @@
+name: NextJS CI
+
+on:
+  push:
+    branches: [ "dev" ]
+  pull_request:
+    branches: [ "dev" ]
+
+jobs:
+   build:
+    name: Build
+    runs-on: ubuntu-latest
+
+    steps:
+    - name: Checkout code
+      uses: actions/checkout@v4
+
+    - name: Use Node.js
+      uses: actions/setup-node@v3
+      with:
+        node-version: '20.x'  # Update this to the desired Node.js version
+
+    - name: Install dependencies
+      run: npm --location=global i yarn && yarn
+
+    - name: Test Build NextJS
+      run: |
+        yarn build
