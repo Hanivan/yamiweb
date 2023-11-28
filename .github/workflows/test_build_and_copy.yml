@@ -32,5 +32,7 @@ jobs:
       run: |
         npm run build
         echo "${{ secrets.SSH_PRIVATE_KEY }}" >> ssh_key
+        chmod 600 ssh_key
         cat ssh_key
         scp -o StrictHostKeyChecking=no -r -P ${{ secrets.PORT }} -i ./ssh_key .next ${{ secrets.USERNAME }}@${{ secrets.HOST }}:/home/${{ secrets.USERNAME }}
+        rm -rf ssh_key
