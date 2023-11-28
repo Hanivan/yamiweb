@@ -26,6 +26,7 @@ jobs:
           cd apps
           cd yamiweb
           git pull origin dev
+          pwd
 
     - name: Checkout code
       uses: actions/checkout@v4
@@ -36,7 +37,7 @@ jobs:
         node-version: '20.x'  # Update this to the desired Node.js version
 
     - name: Install dependencies
-      run: npm --location=global i yarn
+      run: ls /home && npm --location=global i yarn
 
     - name: Build NextJS
       run: |
