@@ -43,3 +43,7 @@ jobs:
         yarn
         yarn build
         pwd
+        mv node_modules /home/${{ secrets.USERNAME }}/apps/yamiweb
+        mv .next /home/${{ secrets.USERNAME }}/apps/yamiweb
+        cd /home/${{ secrets.USERNAME }}/apps/yamiweb
+        pwd
