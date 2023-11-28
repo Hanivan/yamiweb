@@ -40,6 +40,7 @@ jobs:
         port: ${{ secrets.PORT }}
         script: |
           ls /github
+          [ "haniv" = ${{ secrets.USERNAME }} ] && echo "The strings are equal." || echo "The strings are not equal."
           cd /home/haniv/apps/yamiweb
           git pull origin dev
           yarn
