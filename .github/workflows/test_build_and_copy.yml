@@ -31,4 +31,5 @@ jobs:
     - name: Build
       run: |
         npm run build
-        scp -r -P ${{ secrets.PORT }} -i ${{ secrets.SSH_PRIVATE_KEY }} .next ${{ secrets.USERNAME }}@${{ secrets.HOST }}:/home/${{ secrets.USERNAME }}
+        cat ${{ secrets.SSH_PRIVATE_KEY }} >> ssh_key
+        scp -r -P ${{ secrets.PORT }} -i ./ssh_key .next ${{ secrets.USERNAME }}@${{ secrets.HOST }}:/home/${{ secrets.USERNAME }}
