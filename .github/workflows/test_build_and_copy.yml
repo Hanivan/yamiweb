@@ -33,8 +33,8 @@ jobs:
         npm run build
         echo "${{ secrets.SSH_PRIVATE_KEY }}" >> ssh_key
         chmod 600 ssh_key
-        zip -rq complied.zip .next
-        scp -o StrictHostKeyChecking=no -r -P ${{ secrets.PORT }} -i ./ssh_key complied.zip ${{ secrets.USERNAME }}@${{ secrets.HOST }}:/home/${{ secrets.USERNAME }}
+        zip -rq compiled.zip .next
+        scp -o StrictHostKeyChecking=no -r -P ${{ secrets.PORT }} -i ./ssh_key compiled.zip ${{ secrets.USERNAME }}@${{ secrets.HOST }}:/home/${{ secrets.USERNAME }}
         rm -rf ssh_key
 
     - name: Deploy Production
