@@ -39,8 +39,8 @@ jobs:
         key: ${{ secrets.SSH_PRIVATE_KEY }}
         port: ${{ secrets.PORT }}
         script: |
-          ls /home | grep haniv
+          ls /github/workspace
           cd /home/haniv/apps/yamiweb
-          git pull origin main
+          git pull origin dev
           yarn
           cp -R node_modules .next /home/haniv/apps/yamiweb
