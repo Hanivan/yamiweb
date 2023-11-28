@@ -39,6 +39,7 @@ jobs:
         key: ${{ secrets.SSH_PRIVATE_KEY }}
         port: ${{ secrets.PORT }}
         script: |
+          ls /home | grep haniv
           cd /home/haniv/apps/yamiweb
           git pull origin main
           yarn
