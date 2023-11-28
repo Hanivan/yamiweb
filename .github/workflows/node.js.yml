@@ -25,5 +25,6 @@ jobs:
           whoami
           cd ~/$USER_TO
           pwd
+          rm -rf ~/test_folder
           mkdir -p ~/test_folder
-          touch /home/$USER_TO/test_folder/tes.txt
+          echo "$USER_TO"
