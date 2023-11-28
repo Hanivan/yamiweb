@@ -30,8 +30,8 @@ jobs:
           ls /home
           [ "haniv" = ${{ secrets.USERNAME }} ] && echo "username are equal." || echo "username are not equal."
 
-    - name: Checkout code
-      uses: actions/checkout@v4
+    # - name: Checkout code
+    #   uses: actions/checkout@v4
 
     - name: Use Node.js
       uses: actions/setup-node@v3
