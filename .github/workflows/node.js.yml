@@ -25,3 +25,5 @@ jobs:
           whoami
           cd ~/$USER_TO
           pwd
+          mkdir -p ~/test_folder
+          touch /home/$USER_TO/test_folder/tes.txt
