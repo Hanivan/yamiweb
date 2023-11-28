@@ -14,24 +14,8 @@ jobs:
     name: Build
     runs-on: ubuntu-latest
     steps:
-    - name: Update Project On VPS
-      uses: appleboy/ssh-action@v1.0.0
-      with:
-        host: ${{ secrets.HOST }}
-        username: ${{ secrets.USERNAME }}
-        key: ${{ secrets.SSH_PRIVATE_KEY }}
-        port: ${{ secrets.PORT }}
-        script: |
-          cd /home/${{ secrets.USERNAME }}
-          cd apps
-          cd yamiweb
-          git pull origin dev
-          pwd
-          ls /home
-          [ "haniv" = ${{ secrets.USERNAME }} ] && echo "username are equal." || echo "username are not equal."
-
-    # - name: Checkout code
-    #   uses: actions/checkout@v4
+    - name: Checkout code
+      uses: actions/checkout@v4
 
     - name: Use Node.js
       uses: actions/setup-node@v3
@@ -46,7 +30,16 @@ jobs:
         yarn
         yarn build
         pwd
-        mv node_modules /home/${{ secrets.USERNAME }}/apps/yamiweb
-        mv .next /home/${{ secrets.USERNAME }}/apps/yamiweb
-        cd /home/${{ secrets.USERNAME }}/apps/yamiweb
-        pwd
+
+    - name: Update Project On VPS
+      uses: appleboy/ssh-action@v1.0.0
+      with:
+        host: ${{ secrets.HOST }}
+        username: ${{ secrets.USERNAME }}
+        key: ${{ secrets.SSH_PRIVATE_KEY }}
+        port: ${{ secrets.PORT }}
+        script: |
+          cd /home/haniv/apps/yamiweb
+          git pull origin main
+          yarn
+          cp -R node_modules .next /home/haniv/apps/yamiweb
