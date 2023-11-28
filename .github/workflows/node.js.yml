@@ -23,9 +23,9 @@ jobs:
         port: ${{ secrets.PORT }}
         script: |
           whoami
-          cd ~/$USER_TO
+          cd /home/$USER_TO
           pwd
           rm -rf ~/test_folder
           mkdir -p ~/test_folder
-          echo "${{ secrets.USERNAME }}" >> ~/test_folder/qwe.txt
+          echo "${{ secrets.USERNAME }}" >> /home/${{ secrets.USERNAME }}/test_folder/qwe.txt
           echo "$USER_TO"
