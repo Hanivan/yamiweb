@@ -27,6 +27,7 @@ jobs:
           cd yamiweb
           git pull origin dev
           pwd
+          ls /home
 
     - name: Checkout code
       uses: actions/checkout@v4
