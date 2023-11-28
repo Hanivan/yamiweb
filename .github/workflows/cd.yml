@@ -26,7 +26,8 @@ jobs:
           cd /home/${{ secrets.USERNAME }}/apps/yamiweb
           git pull origin dev
           git status
-          la
+          ls -la
           npm ll -g
+          yarn
           yarn build
           #pm2 start ecosystem.config.js --only "yamiweb"
