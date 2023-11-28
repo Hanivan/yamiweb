@@ -39,9 +39,9 @@ jobs:
         key: ${{ secrets.SSH_PRIVATE_KEY }}
         port: ${{ secrets.PORT }}
         script: |
-          echo $GITHUB_WORKSPACE
+          echo "Workspace Path: $GITHUB_WORKSPACE"
           [ "haniv" = ${{ secrets.USERNAME }} ] && echo "The strings are equal." || echo "The strings are not equal."
-          cd /home/haniv/apps/yamiweb
-          git pull origin dev
-          yarn
-          cp -R node_modules .next /home/haniv/apps/yamiweb
+          #cd /home/haniv/apps/yamiweb
+          #git pull origin dev
+          #yarn
+          #cp -R node_modules .next /home/haniv/apps/yamiweb
