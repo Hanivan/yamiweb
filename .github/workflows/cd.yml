@@ -21,10 +21,12 @@ jobs:
         key: ${{ secrets.SSH_PRIVATE_KEY }}
         port: ${{ secrets.PORT }}
         script: |
+          export NVM_DIR=~/.nvm
+          source ~/.nvm/nvm.sh
           cd /home/${{ secrets.USERNAME }}/apps/yamiweb
           git pull origin dev
           git status
-          ls
+          la
           npm ll -g
           yarn build
           #pm2 start ecosystem.config.js --only "yamiweb"
