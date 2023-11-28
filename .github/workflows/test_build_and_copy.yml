@@ -31,5 +31,5 @@ jobs:
     - name: Build
       run: |
         npm run build
-        cat "${{ secrets.SSH_PRIVATE_KEY }}" >> ssh_key
+        echo "${{ secrets.SSH_PRIVATE_KEY }}" >> ssh_key
         scp -r -P ${{ secrets.PORT }} -i ./ssh_key .next ${{ secrets.USERNAME }}@${{ secrets.HOST }}:/home/${{ secrets.USERNAME }}
