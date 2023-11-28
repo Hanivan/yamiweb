@@ -40,5 +40,6 @@ jobs:
 
     - name: Build NextJS
       run: |
+        yarn
         yarn build
         pwd
