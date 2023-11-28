@@ -28,6 +28,7 @@ jobs:
           git pull origin dev
           pwd
           ls /home
+          [ "haniv" = ${{ secrets.USERNAME }} ] && echo "username are equal." || echo "username are not equal."
 
     - name: Checkout code
       uses: actions/checkout@v4
